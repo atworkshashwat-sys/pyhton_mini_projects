@@ -9,8 +9,6 @@ if divisor > 2:
 else:
     print("number is a prime number")
     
-    for j in range(0, givennumber+1):
-     print(j) 
     
     
 
