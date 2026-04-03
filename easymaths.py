@@ -1,55 +1,38 @@
 import random
 replay = "yes"
+
 while replay == "yes":  
     print("....................................................................")
     print("welcome to the easy mathematics game")
     print("....................................................................")
-    print("this game is for the students of age around 8 to 12 so fo them to imporve there mathematical skills")
-    print("....................................................................")
-    print("you have 5 attempts to guess the number")
-    print("....................................................................")
-    print("[in easy mode numbers will be taken between 1 to 50]")
-    print("....................................................................")
-    print("[in medium mode numbers will be taken between 50 to 105]")
-    print("....................................................................")
-    print("[in hard mode numbers will be taken between 100 to 200]")
-    print("....................................................................")
+
     op = ("+", "-", "*", "/")
     difficulty = input("choose your difficulty level (easy, medium, hard):")
-    if difficulty == "easy":
-        number1 = random.randint(1,50)
-        number2 = random.randint(1,50)
-        operation = random.choice(op)
-        eq = str(number1) + " " + operation + " " + str(number2)
-        print("what is", eq)
-        
-    elif difficulty == "medium":
-        number1 = random.randint(50,105)
-        number2 = random.randint(50,105)
-        operation = random.choice(op)
-        eq = str(number1) + " " + operation + " " + str(number2)
-        print("what is", eq)
 
+    if difficulty == "easy":
+        min_val, max_val = 1, 50
+    elif difficulty == "medium":
+        min_val, max_val = 50, 105
     else:
-        number1 = random.randint(100,200)
-        number2 = random.randint(100,200) 
-        operation = random.choice(op)  
-        eq = str(number1) + " " + operation + " " + str(number2)
-        print("what is", eq)
-#this function helpss in solving the generated equations
-    answer = eval(eq)
-    attempts = 0  
-    
-    while attempts<5:
-        try:
-            useranswer = float(input("enter your answer:"))
-        except:
-            print("please enter a valid number") 
-        if useranswer == answer:
-            print("correct!")
-            break
+        min_val, max_val = 100, 200
+    score = 0
+    for i in range(5):
+        
+        number1 = random.randint(min_val, max_val)
+        number2 = random.randint(min_val, max_val)
+        operator = random.choice(op)
+
+        eq = str(number1) + " " + operator + " " + str(number2)
+        print(eq)
+        answer = eval(eq)
+        user = float(input("Your answer: "))
+        if user == answer:
+            print("Correct!") 
+            score += 1  
         else:
-            print("try again do not fear it!")
-        attempts = attempts + 1
+            print("Wrong! The correct answer is: ", answer)
+      
     
+    print("Your score is: ",score )   
+
     replay = input("do you want to play again? (yes/no): ")
