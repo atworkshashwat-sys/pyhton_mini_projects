@@ -1,4 +1,8 @@
-givennumber = int(input("enter a number: "))
+try:
+    givennumber = int(input("enter a number: "))
+except ValueError:
+    print("please enter a valid integer")
+    exit(1)
 divisor = 0
 #checking if it is a prime number or not
 for i in range(1, givennumber+1):

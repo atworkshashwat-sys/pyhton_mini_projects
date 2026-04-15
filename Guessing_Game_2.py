@@ -27,7 +27,7 @@ while replay == "yes":
         try:
             usernumber = int(input("guess the number:"))
             #it helps in keeping the program running 
-        except:
+        except ValueError:
             print("please enter a valid number")
             continue
 
