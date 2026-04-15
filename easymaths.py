@@ -1,4 +1,13 @@
 import random
+import operator as op_module
+
+OPERATORS = {
+    "+": op_module.add,
+    "-": op_module.sub,
+    "*": op_module.mul,
+    "/": op_module.truediv,
+}
+
 replay = "yes"
 
 while replay == "yes":  
@@ -6,7 +15,6 @@ while replay == "yes":
     print("welcome to the easy mathematics game")
     print("....................................................................")
 
-    op = ("+", "-", "*", "/")
     difficulty = input("choose your difficulty level (easy, medium, hard):")
 
     if difficulty == "easy":
@@ -20,12 +28,16 @@ while replay == "yes":
         
         number1 = random.randint(min_val, max_val)
         number2 = random.randint(min_val, max_val)
-        operator = random.choice(op)
+        symbol = random.choice(list(OPERATORS.keys()))
 
-        eq = str(number1) + " " + operator + " " + str(number2)
-        print(eq)
-        answer = eval(eq)
-        user = float(input("Your answer: "))
+        print(str(number1) + " " + symbol + " " + str(number2))
+        answer = OPERATORS[symbol](number1, number2)
+        try:
+            user = float(input("Your answer: "))
+        except ValueError:
+            print("Please enter a valid number.")
+            print("Wrong! The correct answer is: ", answer)
+            continue
         if user == answer:
             print("Correct!") 
             score += 1  

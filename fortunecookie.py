@@ -25,8 +25,7 @@ fortunes = [
 "An exciting opportunity will appear soon.",
 "The path you are on will lead to growth."
 ]
-#here you are randomly choosing a number using random command and string calling it in the fortune string 
-number = random.randint(0,20)
-print("your fortune is : " + fortunes[number])
+#here you are randomly choosing a fortune from the list using random.choice
+print("your fortune is : " + random.choice(fortunes))
 print("thank you")
 
